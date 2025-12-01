@@ -6,7 +6,7 @@
 /*   By: ysetiawa <ysetiawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 15:51:40 by hthant            #+#    #+#             */
-/*   Updated: 2025/02/25 15:59:05 by ysetiawa         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:43:10 by ysetiawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ typedef struct s_minishell
 	int			here;
 	int			exit;
 	char		**env2;
+	int			exit_flag;
 }	t_minishell;
 
 typedef struct s_heredoc

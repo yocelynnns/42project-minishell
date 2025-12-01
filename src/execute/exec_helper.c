@@ -6,7 +6,7 @@
 /*   By: ysetiawa <ysetiawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 15:35:01 by hthant            #+#    #+#             */
-/*   Updated: 2025/02/26 15:40:21 by ysetiawa         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:46:19 by ysetiawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int	execute_right_command(int pipefd[2], t_ast_node *ast, t_minishell *mini)
 		close(pipefd[1]);
 		dup2(pipefd[0], STDIN_FILENO);
 		close(pipefd[0]);
+		mini->exit_flag = 1;
 		execute_command(ast, mini);
 		i = mini->exit;
 		cleanup(mini);
@@ -94,6 +95,7 @@ void	pipe_exec_cmd(t_ast_node *ast, t_minishell *mini)
 
 	m.org_fd[0] = dup(STDIN_FILENO);
 	m.org_fd[1] = dup(STDOUT_FILENO);
+	mini->exit_flag = 1;
 	if (cmdchecks(ast, mini) < 0)
 		fkoff(mini, &m, EXIT_FAILURE);
 	if (handle_builtin_commands(ast, mini, &m) == 0)

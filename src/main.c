@@ -6,7 +6,7 @@
 /*   By: ysetiawa <ysetiawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 17:51:00 by ysetiawa          #+#    #+#             */
-/*   Updated: 2025/02/26 15:58:32 by ysetiawa         ###   ########.fr       */
+/*   Updated: 2025/02/26 17:03:26 by ysetiawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ t_minishell	*init_minishell(char **env)
 		return (NULL);
 	mini->exit = 0;
 	mini->here = 0;
+	mini->exit_flag = 0;
 	if (env_init(mini, env) == ERROR)
 	{
 		ft_putstr_fd("Error: Failed to initialize environment variables\n", \

@@ -6,7 +6,7 @@
 /*   By: ysetiawa <ysetiawa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/09 16:54:12 by messs             #+#    #+#             */
-/*   Updated: 2025/02/18 15:12:43 by ysetiawa         ###   ########.fr       */
+/*   Updated: 2025/02/26 17:01:39 by ysetiawa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_exit(char **av, t_minishell *mini)
 	i = 0;
 	if (av[1] && check_is_number(av[1]) == 0)
 	{
-		ft_putstr_fd("exit a\n", STDERR);
+		ft_putstr_fd("exit\n", STDERR);
 		print_exit_error(av[1]);
 		cleanup(mini);
 		exit(2);
@@ -83,11 +83,9 @@ int	ft_exit(char **av, t_minishell *mini)
 		return (1);
 	}
 	if (av[1])
-	{
-		ft_putstr_fd("exit\n", STDERR);
 		mini->exit = ft_atol(av[1], mini);
-		exit(mini->exit % 256);
-	}
+	if (mini->exit_flag == 0)
+		ft_putstr_fd("exit\n", STDERR);
 	i = mini->exit;
 	cleanup(mini);
 	exit(i % 256);
